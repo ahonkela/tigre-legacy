@@ -18,6 +18,7 @@ Description: The tigre package implements our methodology of Gaussian
         of known target genes, or for ranking candidate targets of a
         TF.
 License: AGPL-3
-URL: http://www.bioinf.manchester.ac.uk/resources/tiger/
+URL: https://github.com/ahonkela/tigre
+BugReports: https://github.com/ahonkela/tigre/issues
 biocViews: Microarray, TimeCourse, GeneExpression, Transcription,
 	   GeneRegulation, NetworkInference, Bayesian
