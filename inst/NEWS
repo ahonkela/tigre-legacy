@@ -1,6 +1,12 @@
 Package: tigre
 ==============
 
+Version: 1.24.1
+
+BUG FIXES
+
+* Fix target ranking when data have no variances
+
 Version: 1.16.1
 
 * More informative error messages
