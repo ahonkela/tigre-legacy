@@ -37,6 +37,7 @@
 
 
 .baselineLogLikeGradient <- function(sigma, y, yvar) {
+  sigma <- sigma[1]
   mu <- sum(y / (yvar + sigma)) / sum(1/(yvar+sigma))
   return (list(d1=0.5 * sum((y - mu)^2 / (yvar + sigma)^2 - 1/(yvar + sigma)),
                d2=0.5 * sum(1/(yvar + sigma)^2) - sum((y - mu)^2 / (yvar + sigma)^3)))
@@ -44,6 +45,7 @@
 
 
 .baselineLogLikelihood <- function(sigma, y, yvar) {
+  sigma <- sigma[1]
   mu <- sum(y / (yvar + sigma)) / sum(1/(yvar+sigma))
   return (-0.5 * sum(log(2*pi*(yvar+sigma)) + (y - mu)^2 / (yvar + sigma)))
 }
