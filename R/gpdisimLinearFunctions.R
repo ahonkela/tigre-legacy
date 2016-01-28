@@ -219,7 +219,7 @@ gpdisimExpandParam <- function (model, params) {
   model$m[ind] <- model$y[ind]
   ind <- ind + lengthObs
   for ( i in seq(length=model$numGenes) ) {
-    model$m[ind] <- model$y[ind]-model$mu[i]*array(1, lengthObs, 1)
+    model$m[ind] <- model$y[ind]-model$mu[i]*array(1, c(lengthObs, 1))
     ind <- ind+lengthObs
   }
 
