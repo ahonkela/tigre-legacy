@@ -1,6 +1,6 @@
 useDynLib("tigre", "_ClnDiffErfs")
 
-importFrom(BiocGenerics, updateObject)
+importFrom(BiocGenerics, updateObject, getObjectSlots)
 
 importClassesFrom(Biobase, AnnotatedDataFrame, AssayData, eSet, ExpressionSet,
                   MIAME, Versioned, VersionedBiobase, Versions)
