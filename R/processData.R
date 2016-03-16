@@ -1,6 +1,8 @@
 processData <- function(data, times = NULL, experiments = NULL, do.normalisation=TRUE) {
   if (class(data) == "exprReslt") {
-    require(puma)
+    if (!requireNamespace("puma", quietly = TRUE)) {
+      stop("tigre:processData: puma package required to process exprReslt objects")
+    }
 
     yFull <- exprs(data)
     genes <- featureNames(data)
@@ -33,11 +35,11 @@ processData <- function(data, times = NULL, experiments = NULL, do.normalisation
     pcts <- array(dim = c(numberOfRows, numberOfColumns, 5))
 
     ## Loading the percentiles 5, 25, 50, 75 and 95.
-    pcts[,,1] <- prcfive(data)
-    pcts[,,2] <- prctwfive(data)
-    pcts[,,3] <- prcfifty(data)
-    pcts[,,4] <- prcsevfive(data)
-    pcts[,,5] <- prcninfive(data)
+    pcts[,,1] <- puma::prcfive(data)
+    pcts[,,2] <- puma::prctwfive(data)
+    pcts[,,3] <- puma::prcfifty(data)
+    pcts[,,4] <- puma::prcsevfive(data)
+    pcts[,,5] <- puma::prcninfive(data)
 
     ## normalising the percentiles
     for (i in 1:5) {
@@ -61,7 +63,9 @@ processData <- function(data, times = NULL, experiments = NULL, do.normalisation
     colnames(yFullVar) <- colnames(yFull)
   }
   else if (class(data) == 'LumiBatch') {
-    require(lumi)
+    if (!requireNamespace("lumi", quietly = TRUE)) {
+      stop("tigre:processData: lumi package required to process LumiBatch objects")
+    }
 
     yFull <- exprs(data)
     genes <- featureNames(data)
@@ -88,9 +92,9 @@ processData <- function(data, times = NULL, experiments = NULL, do.normalisation
       normalisation <- normalisation - mean(normalisation)
 
       yFull <- sweep(yFull, 2, exp(normalisation), '/')
-      yFullVar <- sweep(se.exprs(data), 2, exp(normalisation), '/')
+      yFullVar <- sweep(lumi::se.exprs(data), 2, exp(normalisation), '/')
     } else {
-      yFullVar <- se.exprs(data)
+      yFullVar <- lumi::se.exprs(data)
     }
      yFullVar <- yFullVar^2
   }
