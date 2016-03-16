@@ -281,7 +281,7 @@ gpsimExpandParam <- function (model, params) {
     mInd <- simMultiKern$diagBlockDim[1] + yInd
 
     for ( i in seq(length=model$numGenes) ) {
-      model$m[mInd] <- model$y[yInd]-model$mu[i]*array(1, length(yInd), 1)
+      model$m[mInd] <- model$y[yInd]-model$mu[i]*array(1, c(length(yInd), 1))
       yInd <- yInd+simMultiKern$diagBlockDim[i+1]
       mInd <- mInd+simMultiKern$diagBlockDim[i+1]
     }
@@ -289,7 +289,7 @@ gpsimExpandParam <- function (model, params) {
     ind <- seq(along=model$t)
     lengthObs <- length(ind)
     for ( i in seq(length=model$numGenes) ) {
-      model$m[ind] <- model$y[ind]-model$mu[i]*array(1, lengthObs, 1)
+      model$m[ind] <- model$y[ind]-model$mu[i]*array(1, c(lengthObs, 1))
       ind <- ind+lengthObs
     }
   }
