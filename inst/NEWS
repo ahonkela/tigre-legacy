@@ -1,6 +1,12 @@
 Package: tigre
 ==============
 
+Version: 1.24.2
+
+BUG FIXES
+
+* R-3.2.4 compatibility update
+
 Version: 1.24.1
 
 BUG FIXES
