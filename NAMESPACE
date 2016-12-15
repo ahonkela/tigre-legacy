@@ -14,11 +14,11 @@ importMethodsFrom(Biobase, annotation, experimentData, exprs,
                  featureData, featureNames, phenoData)
 
 importMethodsFrom(DBI, dbCommit, dbConnect, dbDisconnect, dbDriver,
-                  dbGetQuery, dbListTables)
+                  dbExecute, dbGetQuery, dbListTables)
 
 importMethodsFrom(methods, initialize, show)
 
-importMethodsFrom(RSQLite, dbBeginTransaction, dbGetPreparedQuery)
+importMethodsFrom(RSQLite, dbBeginTransaction)
 
 importFrom(annotate, getAnnMap)
 
@@ -27,15 +27,17 @@ importFrom(Biobase, assayDataElement, assayDataElementNames,
 
 importFrom(gplots, plotCI)
 
-importFrom(graphics, layout, lines, par, plot, title)
+importFrom(graphics, layout, lines, par, plot, title, polygon)
 
-importFrom(methods, callNextMethod, new)
+importFrom(grDevices, dev.off, png)
+
+importFrom(methods, callNextMethod, new, slotNames)
 
 importFrom(RSQLite, SQLite)
 
 importFrom(stats, optim, optimize, qgamma, qnorm, rnorm, sd)
 
-importFrom(utils, sessionInfo, write.table)
+importFrom(utils, sessionInfo, write.table, tail)
 
 ##export everything that does not start with a . or an _
 exportPattern("^[^\\._]")
